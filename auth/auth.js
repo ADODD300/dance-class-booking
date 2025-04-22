@@ -13,9 +13,9 @@ exports.login = function (req, res,next) {
       return res.status(401).send();
     }
     if (!user) {
-      console.log("user ", username, " not found");
-      return res.render("user/register");
-    }
+      console.log("User", username, "not found");
+      return res.render("user/login", { error: "Invalid username or password." });
+    }    
     bcrypt.compare(password, user.password, function (err, result) {
       if (result) {
         let payload = { username: username };

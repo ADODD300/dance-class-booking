@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{> header}}
+</head>
+<body class="container mt-5">
+
+<div class="text-center">
+  <h2 class="mb-4 text-success">✅ Booking Confirmed!</h2>
+
+  <p class="lead">
+    Thank you, {{guest.name}}. Your booking has been successfully recorded.
+  </p>
+
+  {{#course}}
+    <p>You are now enrolled in the full course: <strong>{{course.name}}</strong>.</p>
+  {{/course}}
+
+  {{#class}}
+    <p>You are now booked for the class on <strong>{{class.date}}</strong> at <strong>{{class.time}}</strong>.</p>
+  {{/class}}
+
+  <a href="/" class="btn btn-primary mt-4">Return to Homepage</a>
+</div>
+
+</body>
+</html>

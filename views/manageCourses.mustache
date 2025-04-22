@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{> header}}
+</head>
+<body class="container mt-4">
+
+<h2 class="mb-4">Manage Courses</h2>
+
+<a href="/organiser/courses/add" class="btn btn-success mb-3">Add New Course</a>
+
+<table class="table table-bordered">
+  <thead class="table-light">
+    <tr>
+      <th>Name</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#courses}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{startDate}}</td>
+      <td>{{endDate}}</td>
+      <td>£{{price}}</td>
+      <td>
+        <a href="/organiser/courses/edit/{{_id}}" class="btn btn-outline-secondary btn-sm">Edit</a>
+        <form method="POST" action="/organiser/courses/delete/{{_id}}" style="display:inline;">
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="5">
+        {{#participants.length}}
+        <strong>Participants:</strong>
+        <ul class="list-group mb-3">
+          {{#participants}}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{name}} ({{email}})
+            <form method="POST" action="/organiser/courses/{{courseId}}/remove/{{id}}">
+              <button class="btn btn-sm btn-danger">Remove</button>
+            </form>
+          </li>
+          {{/participants}}
+        </ul>
+        {{/participants.length}}
+
+        {{^participants.length}}
+        <em>No participants yet.</em>
+        {{/participants.length}}
+      </td>
+    </tr>
+    {{/courses}}
+  </tbody>
+</table>
+
+</body>
+</html>

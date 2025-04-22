@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>{{> header}}</head>
+<body class="container mt-4">
+
+<h2 class="mb-4">Edit Class</h2>
+
+<form method="POST" action="/organiser/classes/edit/{{class._id}}">
+  <div class="mb-3">
+    <label>Course</label>
+    <select name="courseName" class="form-control" required>
+      {{#courses}}
+      <option value="{{name}}" {{#isSelected}}{{selected}}{{/isSelected}}>{{name}}</option>
+      {{/courses}}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label>Date</label>
+    <input type="date" name="date" class="form-control" value="{{class.date}}" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Time</label>
+    <input type="time" name="time" class="form-control" value="{{class.time}}" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Location</label>
+    <input type="text" name="location" class="form-control" value="{{class.location}}" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Description</label>
+    <textarea name="description" class="form-control">{{class.description}}</textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update Class</button>
+  <a href="/organiser/classes" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+</body>
+</html>

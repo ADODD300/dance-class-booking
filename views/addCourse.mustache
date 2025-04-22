@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{> header}}
+</head>
+<body class="container mt-4">
+
+<h2 class="mb-4">Add New Course</h2>
+
+<form method="POST" action="/organiser/courses/add">
+  <div class="mb-3">
+    <label for="name" class="form-label">Course Name</label>
+    <input type="text" class="form-control" name="name" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" name="description" required></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="startDate" class="form-label">Start Date</label>
+    <input type="date" class="form-control" name="startDate" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="endDate" class="form-label">End Date</label>
+    <input type="date" class="form-control" name="endDate" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="price" class="form-label">Price (£)</label>
+    <input type="number" class="form-control" name="price" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create Course</button>
+  <a href="/organiser/courses" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+</body>
+</html>

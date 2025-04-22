@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>{{> header}}</head>
+<body class="container mt-4">
+
+<h2 class="mb-4">Add New Class</h2>
+
+<form method="POST" action="/organiser/classes/add">
+  <div class="mb-3">
+    <label for="courseName">Course</label>
+    <select class="form-control" name="courseName" required>
+      {{#courses}}
+      <option value="{{name}}">{{name}}</option>
+      {{/courses}}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label>Date</label>
+    <input type="date" name="date" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Time</label>
+    <input type="time" name="time" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Location</label>
+    <input type="text" name="location" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Description</label>
+    <textarea name="description" class="form-control"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create Class</button>
+  <a href="/organiser/classes" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+</body>
+</html>

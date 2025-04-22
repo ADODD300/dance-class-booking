@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{> header}}
+</head>
+<body class="container mt-4">
+
+<h1 class="mb-4">Welcome to the Dance Organisation</h1>
+
+<div class="text-right mb-3">
+  {{^user}}
+    <a id="login" href="/login" class="btn btn-primary">
+      Sign in
+    </a>
+  {{/user}}
+
+  {{#user}}
+    <a id="logout" href="/logout" class="btn btn-primary">
+      Sign out
+    </a>
+  {{/user}}
+</div>
+
+<p>We offer a variety of dance classes and workshops for all levels and abilities. Browse our available courses below and book your spot!</p>
+
+<h2 class="mt-5 mb-3">Available Courses</h2>
+
+{{#courses}}
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="card-title">{{name}}</h4>
+      <p class="card-text"><strong>Description:</strong> {{description}}</p>
+      <p class="card-text"><strong>Location:</strong> {{location}}</p>
+      <p class="card-text"><strong>Schedule:</strong> {{schedule}}</p>
+      <p class="card-text"><strong>Price:</strong> £{{price}}</p>
+      
+      <a href="/course/{{_id}}" class="btn btn-outline-primary">View Course Details</a>
+      <a href="/courses/{{_id}}/guest-book" class="btn btn-success mt-2">Book This Course</a>
+
+
+    </div>
+  </div>
+{{/courses}}
+
+
+{{^courses}}
+  <p>No courses available at the moment. Please check back soon!</p>
+{{/courses}}
+
+</body>
+</html>

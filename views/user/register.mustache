@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{> header}}
+</head>
+<body class="container mt-4">
+
+<h1 class="mb-4">Register</h1>
+
+<div class="text-right mb-3">
+  {{^user}}
+    <a id="login" href="/login" class="btn btn-primary">
+      Sign in
+    </a>
+    <a id="register" href="/register" class="btn btn-primary">
+      Register
+    </a>
+  {{/user}}
+
+  {{#user}}
+    <a id="logout" href="/logout" class="btn btn-primary">
+      Sign out
+    </a>
+  {{/user}}
+</div>
+
+<form method="POST" action="/register">
+  <div class="form-group mb-3">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" name="username" required>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="pass">Password</label>
+    <input type="password" class="form-control" id="pass" name="pass" minlength="8" required>
+  </div>
+
+  <button type="submit" class="btn btn-success">Register</button>
+</form>
+
+</body>
+</html>

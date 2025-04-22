@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>{{> header}}</head>
+<body class="container mt-4">
+
+<h2>Manage Organisers</h2>
+
+<a href="/organiser/manage/add" class="btn btn-success mb-3">Add New Organiser</a>
+
+<table class="table table-bordered">
+  <thead>
+    <tr><th>Username</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    {{#users}}
+    <tr>
+      <td>{{user}}</td>
+      <td>
+        <form method="POST" action="/organiser/manage/delete/{{user}}" style="display:inline;">
+          <button class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {{/users}}
+  </tbody>
+</table>
+
+</body>
+</html>

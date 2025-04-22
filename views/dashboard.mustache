@@ -1,0 +1,17 @@
+<html>
+<head>
+  {{>header}}
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>{{title}}</h1>
+    <p class="lead">Welcome, {{organiserName}}. Choose an action:</p>
+
+    <a href="/organiser/courses" class="btn btn-primary mb-3">Manage Courses</a>
+    <a href="/organiser/classes" class="btn btn-primary mb-3">Manage Classes</a>
+    <a href="/organiser/manage" class="btn btn-primary mb-3">Manage Organisers</a>
+    
+    <a href="/logout" class="btn btn-danger mb-3">Logout</a>
+  </div>
+</body>
+</html>

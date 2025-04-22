@@ -1,29 +1,30 @@
 const Datastore = require("gray-nedb");
 const path = require("path");
-const fs = require("fs");
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
 class UserDAO {
   constructor(dbFilePath) {
-    const resolvedPath = dbFilePath || path.join(__dirname, "../db/users.db");
+    let options;
 
-    const dbDir = path.dirname(resolvedPath);
-    if (!fs.existsSync(dbDir)) {
-      fs.mkdirSync(dbDir, { recursive: true });
+    if (process.env.RENDER) {
+      console.log("Running on Render — using in-memory users DB");
+      options = {};
+    } else {
+      options = {
+        filename: dbFilePath || path.join(__dirname, "../db/users.db"),
+        autoload: true,
+      };
     }
 
-    if (!fs.existsSync(resolvedPath)) {
-      fs.writeFileSync(resolvedPath, "");
-    }
-
-    this.db = new Datastore({ filename: resolvedPath, autoload: true });
+    this.db = new Datastore(options);
   }
 
   init() {
     this.db.insert({
       user: "Peter",
-      password: "$2b$10$I82WRFuGghOMjtu3LLZW9OAMrmYOlMZjEEkh.vx.K2MM05iu5hY2C",
+      password:
+        "$2b$10$I82WRFuGghOMjtu3LLZW9OAMrmYOlMZjEEkh.vx.K2MM05iu5hY2C",
     });
     this.db.insert({
       user: "Ann",

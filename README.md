@@ -10,3 +10,5 @@ A web app for a local dance organisation to manage courses, classes, and partici
 1. Clone the repo:
 git clone https://github.com/ADODD300/dance-class-booking cd dance-class-booking npm install node index.js
 
+username = admin
+password = admin
